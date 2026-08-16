@@ -1,0 +1,172 @@
+.row {
+  transition: background-color var(--transition-fast);
+
+  td {
+    padding: var(--space-4);
+    vertical-align: middle;
+    border-bottom: 1px solid var(--color-rule);
+  }
+
+  &:last-child td {
+    border-bottom: 0;
+  }
+
+  &:hover td {
+    background-color: var(--color-paper-deep);
+  }
+}
+
+.position {
+  width: 4rem;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-ink-faint);
+}
+
+.nameCell {
+  min-width: 0;
+}
+
+.name {
+  @include display-heading;
+
+  font-size: var(--font-size-md);
+  color: var(--color-ink);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+
+  @include focus-ring;
+
+  &:hover {
+    color: var(--color-ember);
+  }
+}
+
+.typeCell {
+  width: 12rem;
+}
+
+.type {
+  @include eyebrow;
+  @include line-clamp(1);
+
+  display: inline-block;
+  max-width: 100%;
+}
+
+.dateCell {
+  width: 9rem;
+}
+
+.date {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-ink-muted);
+  white-space: nowrap;
+}
+
+.actionsCell {
+  width: 9.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  justify-content: center;
+}
+
+
+@include until('tablet') {
+  .row {
+    display: grid;
+    grid-template-areas:
+      'position name actions'
+      'position type actions'
+      'position date actions';
+    grid-template-columns: 2rem minmax(0, 1fr) auto;
+    gap: var(--space-2) var(--space-3);
+    align-items: center;
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--color-rule);
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    td {
+      display: block;
+      width: auto;
+      padding: 0;
+      border-bottom: 0;
+    }
+
+    &:hover td {
+      background-color: transparent;
+    }
+
+    &:hover {
+      background-color: var(--color-paper-deep);
+    }
+  }
+
+  .position {
+    grid-area: position;
+    align-self: start;
+    padding-top: 0.25rem;
+  }
+
+  .nameCell {
+    grid-area: name;
+  }
+
+  .name {
+    font-size: var(--font-size-lg);
+  }
+
+  .typeCell {
+    grid-area: type;
+    line-height: 1.25;
+  }
+
+  .dateCell {
+    grid-area: date;
+    line-height: 1.25;
+  }
+
+  .dateCell::before {
+    margin-right: var(--space-2);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    color: var(--color-ink-faint);
+    content: attr(data-label) ':';
+  }
+
+  .actionsCell {
+    grid-area: actions;
+  }
+
+  .actions {
+    justify-content: flex-end;
+  }
+}
+
+@include until('mobile') {
+  .row {
+    grid-template-areas:
+      'position name'
+      'position type'
+      'position date'
+      'actions  actions';
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: var(--space-2) var(--space-3);
+  }
+
+  .actionsCell {
+    padding-top: var(--space-3);
+  }
+
+  .actions {
+    justify-content: flex-end;
+  }
+}

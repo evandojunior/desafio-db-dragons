@@ -1,0 +1,48 @@
+.shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background-color: var(--color-paper);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.topbarInner {
+  @include page-container;
+
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--topbar-height);
+}
+
+.wordmark {
+  @include brand-wordmark;
+
+  font-size: var(--font-size-md);
+  color: var(--color-ink);
+  text-decoration: none;
+
+  @include focus-ring;
+
+  &:hover {
+    color: var(--color-ember);
+  }
+}
+
+.content {
+  @include page-container;
+
+  flex: 1;
+  padding-block: var(--space-5) var(--space-8);
+
+  @include from('tablet') {
+    padding-block: var(--space-6) var(--space-8);
+  }
+}

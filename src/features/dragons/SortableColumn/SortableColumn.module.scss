@@ -1,0 +1,37 @@
+.header {
+  padding: 0;
+  text-align: left;
+}
+
+.trigger {
+  @include eyebrow;
+
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  background: none;
+  border: 0;
+  transition: color var(--transition-fast);
+
+  @include focus-ring(-2px);
+
+  &:hover {
+    color: var(--color-ember);
+  }
+}
+
+.active {
+  color: var(--color-ink);
+}
+
+.indicator {
+  font-size: var(--font-size-xs);
+  line-height: 1;
+  color: var(--color-ember);
+}
+
+.trigger:not(.active) .indicator {
+  color: var(--color-rule-strong);
+}

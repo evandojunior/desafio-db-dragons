@@ -1,0 +1,52 @@
+.wrapper {
+  margin-top: var(--space-4);
+  overflow-x: auto;
+  border: 1px solid var(--color-rule-strong);
+  border-radius: var(--radius-sm);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+
+  @include from('tablet') {
+    table-layout: fixed;
+    min-width: 42rem;
+  }
+
+  @include until('tablet') {
+    display: block;
+
+    tbody {
+      display: block;
+    }
+  }
+}
+
+.caption {
+  @include visually-hidden;
+}
+
+.head {
+  background-color: var(--color-paper-deep);
+
+  th {
+    border-bottom: 1px solid var(--color-rule-strong);
+  }
+
+  @include until('tablet') {
+    @include visually-hidden;
+  }
+}
+
+.position {
+  width: 5.5rem;
+}
+
+.actions {
+  @include eyebrow;
+
+  width: 9.5rem;
+  padding: var(--space-3) var(--space-4);
+  text-align: center;
+}
