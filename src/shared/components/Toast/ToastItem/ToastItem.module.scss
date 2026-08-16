@@ -1,0 +1,90 @@
+.toast {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-3);
+  align-items: start;
+  padding: var(--space-3) var(--space-4);
+  pointer-events: auto;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-rule-strong);
+  border-left-width: 3px;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--overlay-lift);
+  animation: slide-in var(--transition-base) both;
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.125rem;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-2xs);
+  color: var(--color-ink-inverse);
+  border-radius: 50%;
+}
+
+.message {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-snug);
+  color: var(--color-ink);
+}
+
+.close {
+  padding: 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-ink-faint);
+  background: none;
+  border: 0;
+
+  @include focus-ring(2px);
+
+  &:hover {
+    color: var(--color-ink);
+  }
+}
+
+.success {
+  border-left-color: var(--color-success);
+
+  .mark {
+    background-color: var(--color-success);
+  }
+}
+
+.error {
+  border-left-color: var(--color-danger);
+
+  .mark {
+    background-color: var(--color-danger);
+  }
+}
+
+.warning {
+  border-left-color: var(--color-warning);
+
+  .mark {
+    background-color: var(--color-warning);
+  }
+}
+
+.info {
+  border-left-color: var(--color-ink-muted);
+
+  .mark {
+    background-color: var(--color-ink-muted);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

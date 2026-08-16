@@ -1,0 +1,21 @@
+.viewport {
+  position: fixed;
+  z-index: 100;
+  inset: auto var(--space-4) var(--space-4);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+
+  @include from('tablet') {
+    inset: var(--space-5) var(--space-5) auto auto;
+    justify-content: flex-end;
+  }
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 26rem;
+}
