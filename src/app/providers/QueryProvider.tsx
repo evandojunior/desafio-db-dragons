@@ -20,6 +20,10 @@ function createQueryClient() {
         gcTime: CACHE_MAX_AGE_MS,
         refetchOnWindowFocus: false,
         retry: 1,
+        networkMode: 'always',
+      },
+      mutations: {
+        networkMode: 'always',
       },
     },
   });

@@ -51,6 +51,19 @@ describe('ficha do dragao', () => {
     expect(screen.queryByRole('list', { name: 'Histórias do dragão' })).not.toBeInTheDocument();
   });
 
+  it('reporta a falha em vez de carregar para sempre com o navegador offline', async () => {
+    const onLine = vi.spyOn(navigator, 'onLine', 'get').mockReturnValue(false);
+    const dragons = withHistories();
+    vi.spyOn(dragons, 'findById').mockRejectedValue(new HttpError('network'));
+
+    renderDetail(dragons);
+
+    expect(await screen.findByText('Não foi possível abrir o registro')).toBeInTheDocument();
+    expect(screen.queryByText(/Abrindo registro/)).not.toBeInTheDocument();
+
+    onLine.mockRestore();
+  });
+
   it('avisa quando o registro nao existe', async () => {
     renderApp({ route: '/dragons/999', dragons: withHistories() });
 

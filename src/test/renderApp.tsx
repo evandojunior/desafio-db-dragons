@@ -21,8 +21,8 @@ interface RenderAppOptions {
 function createTestQueryClient() {
   return new QueryClient({
     defaultOptions: {
-      queries: { retry: false, gcTime: 0, staleTime: 0 },
-      mutations: { retry: false },
+      queries: { retry: false, gcTime: 0, staleTime: 0, networkMode: 'always' },
+      mutations: { retry: false, networkMode: 'always' },
     },
   });
 }
