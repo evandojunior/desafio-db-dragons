@@ -1,5 +1,6 @@
 import { BrowserRouter } from 'react-router-dom';
 
+import { ErrorBoundary } from '@/app/ErrorBoundary';
 import { QueryProvider } from '@/app/providers/QueryProvider';
 import { RepositoriesProvider } from '@/app/providers/RepositoriesProvider';
 import { AppRoutes } from '@/app/routes';
@@ -15,7 +16,9 @@ export function App() {
           <RepositoriesProvider>
             <ToastProvider>
               <AuthProvider>
-                <AppRoutes />
+                <ErrorBoundary>
+                  <AppRoutes />
+                </ErrorBoundary>
               </AuthProvider>
             </ToastProvider>
           </RepositoriesProvider>

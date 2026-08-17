@@ -1,0 +1,8 @@
+.page {
+  @include page-container;
+
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding-block: var(--space-6);
+}
