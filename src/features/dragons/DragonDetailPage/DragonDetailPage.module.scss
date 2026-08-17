@@ -1,0 +1,85 @@
+.back {
+  @include eyebrow;
+
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+  margin-bottom: var(--space-4);
+  text-decoration: none;
+
+  @include focus-ring;
+
+  &:hover {
+    color: var(--color-ember);
+  }
+}
+
+.sheet {
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--color-rule);
+}
+
+.entry {
+  display: grid;
+  gap: var(--space-1);
+  padding-block: var(--space-3);
+  border-bottom: 1px solid var(--color-rule);
+
+  @include from('tablet') {
+    grid-template-columns: 9rem minmax(0, 1fr);
+    gap: var(--space-4);
+    align-items: baseline;
+  }
+}
+
+.term {
+  @include eyebrow;
+}
+
+.value {
+  @include display-heading;
+
+  margin: 0;
+  font-size: var(--font-size-lg);
+  overflow-wrap: anywhere;
+}
+
+.identifier {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-ink-muted);
+}
+
+.action,
+.destructiveAction {
+  @include eyebrow;
+
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+  min-height: 2.75rem;
+  padding-inline: var(--space-4);
+  text-decoration: none;
+  background: none;
+  border: 1px solid var(--color-rule-strong);
+  border-radius: var(--radius-sm);
+  transition:
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+
+  @include focus-ring;
+}
+
+.action:hover {
+  color: var(--color-ember);
+  background-color: var(--color-ember-wash);
+  border-color: var(--color-ember);
+}
+
+.destructiveAction:hover {
+  color: var(--color-danger);
+  background-color: var(--color-danger-wash);
+  border-color: var(--color-danger);
+}
