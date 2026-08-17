@@ -1,0 +1,107 @@
+.container {
+  position: relative;
+}
+
+.trigger {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+  height: 2.25rem;
+  padding-inline: var(--space-2);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  transition:
+    border-color var(--transition-fast),
+    background-color var(--transition-fast);
+
+  @include focus-ring;
+
+  &:hover,
+  &[aria-expanded='true'] {
+    background-color: var(--color-surface);
+    border-color: var(--color-rule-strong);
+  }
+}
+
+.initial {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  font-family: var(--font-display);
+  font-size: var(--font-size-xs);
+  color: var(--color-ink-inverse);
+  background-color: var(--color-ember);
+  border-radius: 50%;
+}
+
+.username {
+  display: none;
+  font-size: var(--font-size-sm);
+  color: var(--color-ink);
+
+  @include from('mobile') {
+    display: inline;
+  }
+}
+
+.caret {
+  font-size: var(--font-size-2xs);
+  color: var(--color-ink-faint);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  min-width: 12rem;
+  padding: var(--space-1);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-rule-strong);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--overlay-lift);
+  animation: drop var(--transition-fast) both;
+}
+
+.item,
+.itemDanger {
+  @include eyebrow;
+
+  padding: var(--space-3);
+  text-align: left;
+  background: none;
+  border: 0;
+  border-radius: var(--radius-sm);
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast);
+
+  @include focus-ring(-2px);
+}
+
+.item:hover {
+  color: var(--color-ember);
+  background-color: var(--color-ember-wash);
+}
+
+.itemDanger {
+  margin-top: var(--space-1);
+  border-top: 1px solid var(--color-rule);
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+
+  &:hover {
+    color: var(--color-danger);
+    background-color: var(--color-danger-wash);
+  }
+}
+
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
